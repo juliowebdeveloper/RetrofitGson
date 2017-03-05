@@ -25,7 +25,8 @@ public class Controller  {
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         GerritAPI gerritAPI = retrofit.create(GerritAPI.class);
-        Call<List<Change>> call = gerritAPI.loadChangeList("status:open");
+       // Call<List<Change>> call = gerritAPI.loadChangeList("status:open");
+            Call<List<Change>> call = gerritAPI.loadChangeList(null);
         call.enqueue(new Callback<List<Change>>() {
             @Override
             public void onResponse(Call<List<Change>> call, Response<List<Change>> response) {
